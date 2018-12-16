@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -24,11 +25,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String _pin1 = '';
 
-  void _incrementCounter() {
+  void _generatePins() {
+    final _random = new Random();
+
     setState(() {
-      _counter++;
+      _pin1 = _random.nextInt(1000000).toString().padLeft(6,'0');
     });
   }
 
@@ -46,14 +49,14 @@ class _MyHomePageState extends State<MyHomePage> {
               'Your PIN is:',
             ),
             Text(
-              '$_counter',
+              '$_pin1',
               style: Theme.of(context).textTheme.display1,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _generatePins,
         tooltip: 'Increment',
         child: Icon(Icons.apps),
       ), // This trailing comma makes auto-formatting nicer for build methods.
