@@ -26,12 +26,22 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _pin1 = '';
+  String _pin2 = '';
+  String _pin3 = '';
+  String _pin4 = '';
+  String _pin5 = '';
+  String _pin6 = '';
 
   void _generatePins() {
     final _random = new Random();
 
     setState(() {
       _pin1 = _random.nextInt(1000000).toString().padLeft(6,'0');
+      _pin2 = _random.nextInt(1000000).toString().padLeft(6,'0');
+      _pin3 = _random.nextInt(1000000).toString().padLeft(6,'0');
+      _pin4 = _random.nextInt(1000000).toString().padLeft(6,'0');
+      _pin5 = _random.nextInt(1000000).toString().padLeft(6,'0');
+      _pin6 = _random.nextInt(1000000).toString().padLeft(6,'0');
     });
   }
 
@@ -46,10 +56,27 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Your PIN is:',
+              '$_pin1',
+              style: Theme.of(context).textTheme.display1,
             ),
             Text(
-              '$_pin1',
+              '$_pin2',
+              style: Theme.of(context).textTheme.display1,
+            ),
+            Text(
+              '$_pin3',
+              style: Theme.of(context).textTheme.display1,
+            ),
+            Text(
+              '$_pin4',
+              style: Theme.of(context).textTheme.display1,
+            ),
+            Text(
+              '$_pin5',
+              style: Theme.of(context).textTheme.display1,
+            ),
+            Text(
+              '$_pin6',
               style: Theme.of(context).textTheme.display1,
             ),
           ],
@@ -59,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _generatePins,
         tooltip: 'Increment',
         child: Icon(Icons.apps),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
