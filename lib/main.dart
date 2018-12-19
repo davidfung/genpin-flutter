@@ -55,30 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              '$_pin1',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin2',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin3',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin4',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin5',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin6',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            Expanded(child: Text('$_pin1', style: Theme.of(context).textTheme.display3)),
+            Expanded(child: Text('$_pin2', style: Theme.of(context).textTheme.display3)),
+            Expanded(child: Text('$_pin3', style: Theme.of(context).textTheme.display3)),
+            Expanded(child: Text('$_pin4', style: Theme.of(context).textTheme.display3)),
+            Expanded(child: Text('$_pin5', style: Theme.of(context).textTheme.display3)),
+            Expanded(child: Text('$_pin6', style: Theme.of(context).textTheme.display3)),
           ],
         ),
       ),
