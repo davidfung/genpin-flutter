@@ -53,14 +53,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(child: Text('$_pin1', style: Theme.of(context).textTheme.display3)),
-            Expanded(child: Text('$_pin2', style: Theme.of(context).textTheme.display3)),
-            Expanded(child: Text('$_pin3', style: Theme.of(context).textTheme.display3)),
-            Expanded(child: Text('$_pin4', style: Theme.of(context).textTheme.display3)),
-            Expanded(child: Text('$_pin5', style: Theme.of(context).textTheme.display3)),
-            Expanded(child: Text('$_pin6', style: Theme.of(context).textTheme.display3)),
+            Expanded(child: Center(child: Text('$_pin1', style: Theme.of(context).textTheme.display2))),
+            Expanded(child: Center(child: Text('$_pin2', style: Theme.of(context).textTheme.display2))),
+            Expanded(child: Center(child: Text('$_pin3', style: Theme.of(context).textTheme.display2))),
+            Expanded(child: Center(child: Text('$_pin4', style: Theme.of(context).textTheme.display2))),
+            Expanded(child: Center(child: Text('$_pin5', style: Theme.of(context).textTheme.display2))),
+            Expanded(child: Center(child: Text('$_pin6', style: Theme.of(context).textTheme.display2))),
           ],
         ),
       ),
