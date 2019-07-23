@@ -36,12 +36,12 @@ class _MyHomePageState extends State<MyHomePage> {
     final _random = new Random();
 
     setState(() {
-      _pin1 = _random.nextInt(1000000).toString().padLeft(6,'0');
-      _pin2 = _random.nextInt(1000000).toString().padLeft(6,'0');
-      _pin3 = _random.nextInt(1000000).toString().padLeft(6,'0');
-      _pin4 = _random.nextInt(1000000).toString().padLeft(6,'0');
-      _pin5 = _random.nextInt(1000000).toString().padLeft(6,'0');
-      _pin6 = _random.nextInt(1000000).toString().padLeft(6,'0');
+      _pin1 = _random.nextInt(1000000).toString().padLeft(6, '0');
+      _pin2 = _random.nextInt(1000000).toString().padLeft(6, '0');
+      _pin3 = _random.nextInt(1000000).toString().padLeft(6, '0');
+      _pin4 = _random.nextInt(1000000).toString().padLeft(6, '0');
+      _pin5 = _random.nextInt(1000000).toString().padLeft(6, '0');
+      _pin6 = _random.nextInt(1000000).toString().padLeft(6, '0');
     });
   }
 
@@ -86,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _generatePins,
         tooltip: 'Increment',
         child: Icon(Icons.apps),
+      ),
     );
   }
 }
