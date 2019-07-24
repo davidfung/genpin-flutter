@@ -45,10 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget buildPinWidget(String pin) {
-    return Text(
+    return Center(
+        child: Text(
       pin,
       style: Theme.of(context).textTheme.display1,
-    );
+    ));
   }
 
   @override
@@ -57,18 +58,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            buildPinWidget(_pin1),
-            buildPinWidget(_pin2),
-            buildPinWidget(_pin3),
-            buildPinWidget(_pin4),
-            buildPinWidget(_pin5),
-            buildPinWidget(_pin6),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          Expanded(child: buildPinWidget(_pin1)),
+          Expanded(child: buildPinWidget(_pin2)),
+          Expanded(child: buildPinWidget(_pin3)),
+          Expanded(child: buildPinWidget(_pin4)),
+          Expanded(child: buildPinWidget(_pin5)),
+          Expanded(child: buildPinWidget(_pin6)),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _generatePins,
