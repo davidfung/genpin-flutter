@@ -34,7 +34,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _generatePins() {
     final _random = new Random();
-
     setState(() {
       _pin1 = _random.nextInt(1000000).toString().padLeft(6, '0');
       _pin2 = _random.nextInt(1000000).toString().padLeft(6, '0');
@@ -43,6 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
       _pin5 = _random.nextInt(1000000).toString().padLeft(6, '0');
       _pin6 = _random.nextInt(1000000).toString().padLeft(6, '0');
     });
+  }
+
+  Widget buildPinWidget(String pin) {
+    return Text(
+      pin,
+      style: Theme.of(context).textTheme.display1,
+    );
   }
 
   @override
@@ -55,30 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              '$_pin1',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin2',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin3',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin4',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin5',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              '$_pin6',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            buildPinWidget(_pin1),
+            buildPinWidget(_pin2),
+            buildPinWidget(_pin3),
+            buildPinWidget(_pin4),
+            buildPinWidget(_pin5),
+            buildPinWidget(_pin6),
           ],
         ),
       ),
