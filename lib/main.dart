@@ -57,6 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.info_outline),onPressed: (){}, tooltip: 'About',),
+          IconButton(icon: Icon(Icons.settings),onPressed: (){}, tooltip: 'Settings',)
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -71,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _generatePins,
         tooltip: 'Increment',
-        child: Icon(Icons.apps),
+        child: Icon(Icons.refresh),
       ),
     );
   }
