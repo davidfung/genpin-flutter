@@ -1,5 +1,9 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
+
+import './pages/about.dart';
+import './pages/settings.dart';
 
 void main() => runApp(MyApp());
 
@@ -58,8 +62,22 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.info_outline),onPressed: (){}, tooltip: 'About',),
-          IconButton(icon: Icon(Icons.settings),onPressed: (){}, tooltip: 'Settings',)
+          IconButton(
+            icon: Icon(Icons.info_outline),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AboutPage()));
+            },
+            tooltip: 'About',
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SettingsPage()));
+            },
+            tooltip: 'Settings',
+          )
         ],
       ),
       body: Column(
