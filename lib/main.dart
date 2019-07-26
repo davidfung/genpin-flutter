@@ -29,22 +29,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _pin1 = '';
-  String _pin2 = '';
-  String _pin3 = '';
-  String _pin4 = '';
-  String _pin5 = '';
-  String _pin6 = '';
+  List<String> _pins = ["", "", "", "", "", ""];
 
   void _generatePins() {
     final _random = new Random();
     setState(() {
-      _pin1 = _random.nextInt(1000000).toString().padLeft(6, '0');
-      _pin2 = _random.nextInt(1000000).toString().padLeft(6, '0');
-      _pin3 = _random.nextInt(1000000).toString().padLeft(6, '0');
-      _pin4 = _random.nextInt(1000000).toString().padLeft(6, '0');
-      _pin5 = _random.nextInt(1000000).toString().padLeft(6, '0');
-      _pin6 = _random.nextInt(1000000).toString().padLeft(6, '0');
+      _pins = [
+        for (var i in [1, 2, 3, 4, 5, 6])
+          _random.nextInt(1000000).toString().padLeft(6, '0'),
+      ];
     });
   }
 
@@ -82,12 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(child: buildPinWidget(_pin1)),
-          Expanded(child: buildPinWidget(_pin2)),
-          Expanded(child: buildPinWidget(_pin3)),
-          Expanded(child: buildPinWidget(_pin4)),
-          Expanded(child: buildPinWidget(_pin5)),
-          Expanded(child: buildPinWidget(_pin6)),
+          for (var pin in _pins) Expanded(child: buildPinWidget(pin)),
         ],
       ),
       floatingActionButton: FloatingActionButton(
