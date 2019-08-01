@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Center(
         child: Text(
       pin,
-      style: Theme.of(context).textTheme.display1,
+      style: TextStyle(fontSize: MediaQuery.of(context).size.height/_pins.length/2),
     ));
   }
 
@@ -73,11 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          for (var pin in _pins) Expanded(child: buildPinWidget(pin)),
-        ],
-      ),
+      body: 
+         Column(
+          children: <Widget>[
+            for (var pin in _pins) Expanded(child: buildPinWidget(pin)),
+          ],
+        ),
       floatingActionButton: FloatingActionButton(
         onPressed: _generatePins,
         tooltip: 'Increment',
