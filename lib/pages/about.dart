@@ -7,10 +7,8 @@ class AboutPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('About'),
       ),
-      body: Container(
+      body: ListView(
         padding: const EdgeInsets.symmetric(vertical:30.0, horizontal:30.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text('WHY', style: TextStyle(fontWeight: FontWeight.bold)),
             Padding(padding: EdgeInsets.only(top: 7),),
@@ -22,11 +20,10 @@ class AboutPage extends StatelessWidget {
             Padding(padding: EdgeInsets.only(top: 30),),
             Text('Warning', style: TextStyle(fontWeight: FontWeight.bold)),
             Padding(padding: EdgeInsets.only(top: 7),),
-            Text('These pin numbers are not secure enough to use as passwords.'),
-            Spacer(),
+            Text('These pin numbers are not secure enough to be used as passwords.'),
+            Padding(padding: EdgeInsets.only(top: 40),),
             Text('amg99.com', style: TextStyle(fontStyle: FontStyle.italic)),
           ],
-        ),
       ),
     );
   }
