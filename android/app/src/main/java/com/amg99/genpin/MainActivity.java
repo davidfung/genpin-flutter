@@ -1,4 +1,4 @@
-package com.example.genpin;
+package com.amg99.genpin;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
