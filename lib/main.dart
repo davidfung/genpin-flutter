@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final _random = new Random();
     setState(() {
       _pins = [
-        for (var i in [1, 2, 3, 4, 5, 6])
+        for (var _ in [1, 2, 3, 4, 5, 6])
           _random.nextInt(1000000).toString().padLeft(6, '0'),
       ];
     });
