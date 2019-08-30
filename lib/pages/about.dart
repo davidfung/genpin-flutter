@@ -40,7 +40,7 @@ class AboutPage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 40),
           ),
-          GestureDetector(
+          InkWell(
               onTap: () {
                 _launchURL();
               },
