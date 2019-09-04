@@ -24,7 +24,13 @@ class _SettingsPageState extends State<SettingsPage> {
     return Center(
       child: Column(
         children: <Widget>[
-          Text('Pin Length'),
+          ListTile(
+              title: const Padding(
+                  padding: EdgeInsets.only(left: 10.0, top: 10.0),
+                  child: Text('Pin Length',
+                      style: TextStyle(
+                        fontSize: 24.0,
+                      )))),
           ListTile(
             title: const Text('4 digits'),
             leading: Radio(
