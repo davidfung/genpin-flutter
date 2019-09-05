@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 const int DEFAULT_PIN_LENGTH = 6;
 
@@ -8,7 +9,15 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int _pinLength = DEFAULT_PIN_LENGTH;
+  int _pinLength;
+
+  @override
+  void initState() {
+    _loadSettings().then((pinLength) {
+      _pinLength = pinLength;
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +49,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 setState(() {
                   _pinLength = value;
                 });
+                _saveSettings();
               },
             ),
           ),
@@ -51,8 +61,8 @@ class _SettingsPageState extends State<SettingsPage> {
               onChanged: (int value) {
                 setState(() {
                   _pinLength = value;
-                  print(_pinLength);
                 });
+                _saveSettings();
               },
             ),
           ),
@@ -64,13 +74,31 @@ class _SettingsPageState extends State<SettingsPage> {
               onChanged: (int value) {
                 setState(() {
                   _pinLength = value;
-                  print(_pinLength);
                 });
+                _saveSettings();
               },
             ),
           ),
         ],
       ),
     );
+  }
+
+  Future<int> _loadSettings() async {
+    int _pinLength;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    try {
+      _pinLength = prefs.getInt('pinLength');
+    } catch (e) {
+      _pinLength = DEFAULT_PIN_LENGTH;
+    }
+    print("_loadSettings() $_pinLength");
+    return _pinLength;
+  }
+
+  void _saveSettings() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('pinLength', _pinLength);
+    print("_saveSettings() $_pinLength");
   }
 }
