@@ -14,7 +14,9 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     _loadSettings().then((pinLength) {
-      _pinLength = pinLength;
+      setState(() {
+        _pinLength = pinLength;
+      });
     });
     super.initState();
   }
