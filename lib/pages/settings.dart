@@ -94,6 +94,9 @@ class _SettingsPageState extends State<SettingsPage> {
     } catch (e) {
       _pinLength = DEFAULT_PIN_LENGTH;
     }
+    if (_pinLength == null){
+      _pinLength = DEFAULT_PIN_LENGTH;
+    }
     print("_loadSettings() $_pinLength");
     return _pinLength;
   }
