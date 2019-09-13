@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import './pages/about.dart';
@@ -29,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> _pins = ["", "", "", "", "", ""];
+  List<String> _pins = [" ", " ", " ", " ", " ", " "];
 
   void _generatePins() {
     final _random = new Random();
@@ -39,14 +40,6 @@ class _MyHomePageState extends State<MyHomePage> {
           _random.nextInt(1000000).toString().padLeft(6, '0'),
       ];
     });
-  }
-
-  Widget buildPinWidget(String pin) {
-    return Center(
-        child: Text(
-      pin,
-      style: TextStyle(fontSize: MediaQuery.of(context).size.height/_pins.length/2),
-    ));
   }
 
   @override
@@ -73,12 +66,14 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: 
-         Column(
-          children: <Widget>[
-            for (var pin in _pins) Expanded(child: buildPinWidget(pin)),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          for (var pin in _pins)
+            Expanded(child: FittedBox(child: Text(pin))),
+            Spacer()
+        ],
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _generatePins,
         tooltip: 'Increment',
