@@ -89,7 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       w = Column(
         children: <Widget>[
-          for (var pin in _pins) Expanded(child: FittedBox(child: Text(pin))),
+          for (var pin in _pins) Expanded(child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: FittedBox(child: Text(pin)),
+          )),
           if (MediaQuery.of(context).orientation == Orientation.portrait)
             Spacer()
         ],
