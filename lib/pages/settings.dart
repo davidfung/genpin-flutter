@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:genpin/utility/utility.dart';
 
 const int DEFAULT_PIN_LENGTH = 6;
+const String setting_pinLength = 'pin.length';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -13,7 +15,8 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   void initState() {
-    _loadSettings().then((pinLength) {
+    loadIntSettings('pinLength', defaultValue: DEFAULT_PIN_LENGTH)
+        .then((pinLength) {
       setState(() {
         _pinLength = pinLength;
       });
@@ -51,7 +54,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 setState(() {
                   _pinLength = value;
                 });
-                _saveSettings();
+                saveIntSettings('pinLength', _pinLength);
               },
             ),
           ),
@@ -64,7 +67,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 setState(() {
                   _pinLength = value;
                 });
-                _saveSettings();
+                saveIntSettings('pinLength', _pinLength);
               },
             ),
           ),
@@ -77,33 +80,12 @@ class _SettingsPageState extends State<SettingsPage> {
                 setState(() {
                   _pinLength = value;
                 });
-                _saveSettings();
+                saveIntSettings('pinLength', _pinLength);
               },
             ),
           ),
         ],
       ),
     );
-  }
-
-  Future<int> _loadSettings() async {
-    int _pinLength;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    try {
-      _pinLength = prefs.getInt('pinLength');
-    } catch (e) {
-      _pinLength = DEFAULT_PIN_LENGTH;
-    }
-    if (_pinLength == null){
-      _pinLength = DEFAULT_PIN_LENGTH;
-    }
-    print("_loadSettings() $_pinLength");
-    return _pinLength;
-  }
-
-  void _saveSettings() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('pinLength', _pinLength);
-    print("_saveSettings() $_pinLength");
   }
 }
