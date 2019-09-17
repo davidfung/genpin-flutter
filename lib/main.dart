@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:genpin/utility/utility.dart';
 
 import './pages/about.dart';
 import './pages/settings.dart';
@@ -33,12 +34,18 @@ class _MyHomePageState extends State<MyHomePage> {
   List<String> _pins;
 
   void _generatePins() {
-    final _random = new Random();
-    setState(() {
-      _pins = [
-        for (var _ in [1, 2, 3, 4, 5, 6])
-          _random.nextInt(1000000).toString().padLeft(6, '0'),
-      ];
+    final random = new Random();
+    int ceiling;
+
+    loadIntSettings(setting_pinLength, defaultValue: DEFAULT_PIN_LENGTH)
+        .then((pinLength) {
+      ceiling = int.parse("1".padRight(pinLength + 1, '0'));
+      setState(() {
+        _pins = [
+          for (var _ in [1, 2, 3, 4, 5, 6])
+            random.nextInt(ceiling).toString().padLeft(pinLength, '0'),
+        ];
+      });
     });
   }
 
@@ -77,17 +84,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildBody(BuildContext context) {
     Widget w;
-    if (_pins == null){
+    if (_pins == null) {
       w = Container();
-    } else {  
-    w = Column(
-      children: <Widget>[
-        for (var pin in _pins) Expanded(child: FittedBox(child: Text(pin))),
-        if (MediaQuery.of(context).orientation == Orientation.portrait)
-          Spacer()
-      ],
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-    );
+    } else {
+      w = Column(
+        children: <Widget>[
+          for (var pin in _pins) Expanded(child: FittedBox(child: Text(pin))),
+          if (MediaQuery.of(context).orientation == Orientation.portrait)
+            Spacer()
+        ],
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+      );
     }
     return w;
   }

@@ -15,7 +15,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   void initState() {
-    loadIntSettings('pinLength', defaultValue: DEFAULT_PIN_LENGTH)
+    loadIntSettings(setting_pinLength, defaultValue: DEFAULT_PIN_LENGTH)
         .then((pinLength) {
       setState(() {
         _pinLength = pinLength;
@@ -54,7 +54,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 setState(() {
                   _pinLength = value;
                 });
-                saveIntSettings('pinLength', _pinLength);
+                saveIntSettings(setting_pinLength, _pinLength);
               },
             ),
           ),
@@ -67,7 +67,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 setState(() {
                   _pinLength = value;
                 });
-                saveIntSettings('pinLength', _pinLength);
+                saveIntSettings(setting_pinLength, _pinLength);
               },
             ),
           ),
@@ -80,7 +80,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 setState(() {
                   _pinLength = value;
                 });
-                saveIntSettings('pinLength', _pinLength);
+                saveIntSettings(setting_pinLength, _pinLength);
               },
             ),
           ),
