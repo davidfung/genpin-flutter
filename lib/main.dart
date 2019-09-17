@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> _pins = [" ", " ", " ", " ", " ", " "];
+  List<String> _pins;
 
   void _generatePins() {
     final _random = new Random();
@@ -66,19 +66,29 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          for (var pin in _pins)
-            Expanded(child: FittedBox(child: Text(pin))),
-            Spacer()
-        ],
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-      ),
+      body: _buildBody(context),
       floatingActionButton: FloatingActionButton(
         onPressed: _generatePins,
         tooltip: 'Increment',
         child: Icon(Icons.refresh),
       ),
     );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    Widget w;
+    if (_pins == null){
+      w = Container();
+    } else {  
+    w = Column(
+      children: <Widget>[
+        for (var pin in _pins) Expanded(child: FittedBox(child: Text(pin))),
+        if (MediaQuery.of(context).orientation == Orientation.portrait)
+          Spacer()
+      ],
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+    );
+    }
+    return w;
   }
 }
