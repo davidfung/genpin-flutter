@@ -43,7 +43,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         // have to hardcode the versionCode as a workaround in order for the APK accepted by Play Store.
-        versionCode 5100 // flutterVersionCode.toInteger()
+        versionCode 8100 // flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

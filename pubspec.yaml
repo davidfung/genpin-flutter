@@ -7,7 +7,9 @@ description: Generate PIN numbers
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 3.2.0
+version: 3.2.0+8100
+## have to hardcode versionCode in android\app\build.gradle as a workaround 
+## in order for the APK accepted by Play Store.
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
