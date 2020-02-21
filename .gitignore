@@ -73,3 +73,6 @@ ios/Flutter/flutter_export_environment.sh
 
 # Keystore
 key.properties
+
+# auto-gen files
+.flutter-plugins-dependencies
